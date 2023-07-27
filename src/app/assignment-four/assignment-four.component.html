@@ -1,1 +1,4 @@
-<p>assignment-four works!</p>
+<hr>
+<button class="btn btn-primary my-3" (click)="onToggleDetails()">Display Details</button>
+<p *ngIf="showSecret">Secret Password = tuna</p>
+<p *ngFor="let item of items; let i =index" [ngStyle]="{backgroundColor: i>=4 ? 'blue':  'transparent'}" [ngClass]="{'white-text' : i>=4}">{{item}}</p>
