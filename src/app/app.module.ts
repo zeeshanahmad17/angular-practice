@@ -12,6 +12,21 @@ import { ActiveUsersComponent } from './servicesPractice/servicesAssignment/acti
 import { InactiveUsersComponent } from './servicesPractice/servicesAssignment/inactive-users/inactive-users.component';
 import { UserService } from './servicesPractice/servicesAssignment/services/users.service';
 import { CounterService } from './servicesPractice/servicesAssignment/services/counter.service';
+import { RoutingPracticeComponent } from './routingPractice/routingPractice.component';
+import { HomeComponent } from './routingPractice/home/home.component';
+import { UsersComponent } from './routingPractice/users/users.component';
+import { ServersComponent } from './routingPractice/servers/servers.component';
+import { UserComponent } from './routingPractice/users/user/user.component';
+import { EditServerComponent } from './routingPractice/servers/edit-server/edit-server.component';
+import { ServerComponent } from './routingPractice/servers/server/server.component';
+import { ServersService } from './routingPractice/servers/servers.service';
+import { Routes, RouterModule } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'servers', component: ServersComponent },
+  { path: 'users', component: UsersComponent },
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,13 +35,25 @@ import { CounterService } from './servicesPractice/servicesAssignment/services/c
     NewAccountComponent,
     AccountComponent,
 
-    // ---------services assignment-----------------
+    // ---------services assignment---------------
     ServicesAssignmentComponent,
     ActiveUsersComponent,
     InactiveUsersComponent,
+    // ---------routing practice------------------
+    RoutingPracticeComponent,
+    HomeComponent,
+    UsersComponent,
+    ServersComponent,
+    UserComponent,
+    EditServerComponent,
+    ServerComponent
   ],
-  imports: [BrowserModule, FormsModule],
-  providers: [AccountService, LoggingService, UserService, CounterService],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
+  ],
+  providers: [AccountService, LoggingService, UserService, CounterService, ServersService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
