@@ -24,9 +24,20 @@ import { Routes, RouterModule } from '@angular/router';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'servers', component: ServersComponent },
-  { path: 'users', component: UsersComponent },
-]
+  {
+    path: 'servers',
+    component: ServersComponent,
+    children: [
+      { path: ':id', component: ServerComponent },
+      { path: ':id/edit', component: EditServerComponent },
+    ],
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    children: [{ path: ':id/:name', component: UserComponent }],
+  },
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,14 +57,16 @@ const appRoutes: Routes = [
     ServersComponent,
     UserComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    RouterModule.forRoot(appRoutes)
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
+  providers: [
+    AccountService,
+    LoggingService,
+    UserService,
+    CounterService,
+    ServersService,
   ],
-  providers: [AccountService, LoggingService, UserService, CounterService, ServersService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
