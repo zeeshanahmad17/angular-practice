@@ -21,23 +21,10 @@ import { EditServerComponent } from './routingPractice/servers/edit-server/edit-
 import { ServerComponent } from './routingPractice/servers/server/server.component';
 import { ServersService } from './routingPractice/servers/servers.service';
 import { Routes, RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { NotFoundComponent } from './routingPractice/not-found/not-found.component';
 
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  {
-    path: 'servers',
-    component: ServersComponent,
-    children: [
-      { path: ':id', component: ServerComponent },
-      { path: ':id/edit', component: EditServerComponent },
-    ],
-  },
-  {
-    path: 'users',
-    component: UsersComponent,
-    children: [{ path: ':id/:name', component: UserComponent }],
-  },
-];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,8 +45,9 @@ const appRoutes: Routes = [
     UserComponent,
     EditServerComponent,
     ServerComponent,
+    NotFoundComponent,
   ],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [
     AccountService,
     LoggingService,
@@ -69,4 +57,4 @@ const appRoutes: Routes = [
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
