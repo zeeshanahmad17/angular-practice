@@ -7,12 +7,15 @@ import { UserComponent } from "./routingPractice/users/user/user.component";
 import { UsersComponent } from "./routingPractice/users/users.component";
 import { NgModule } from "@angular/core";
 import { NotFoundComponent } from "./routingPractice/not-found/not-found.component";
+import { AuthGuard } from "./auth-guard.service";
 
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     {
         path: 'servers',
+        // canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
         component: ServersComponent,
         children: [
             { path: ':id', component: ServerComponent },

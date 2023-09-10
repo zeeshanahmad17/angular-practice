@@ -23,6 +23,8 @@ import { ServersService } from './routingPractice/servers/servers.service';
 import { Routes, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './routingPractice/not-found/not-found.component';
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
 
 
 @NgModule({
@@ -54,6 +56,8 @@ import { NotFoundComponent } from './routingPractice/not-found/not-found.compone
     UserService,
     CounterService,
     ServersService,
+    AuthGuard,
+    AuthService
   ],
   bootstrap: [AppComponent],
 })
