@@ -27,41 +27,43 @@ import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { CanDeactivateGuard } from './routingPractice/servers/edit-server/can-deactivate-guard.service';
 import { ErrorPageComponent } from './routingPractice/error-page/error-page.component';
+import { ServerResolver } from './routingPractice/servers/server/server-resolver.service';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        // ---------services practice-----------------
-        ServicepComponent,
-        NewAccountComponent,
-        AccountComponent,
+  declarations: [
+    AppComponent,
+    // ---------services practice-----------------
+    ServicepComponent,
+    NewAccountComponent,
+    AccountComponent,
 
-        // ---------services assignment---------------
-        ServicesAssignmentComponent,
-        ActiveUsersComponent,
-        InactiveUsersComponent,
-        // ---------routing practice------------------
-        RoutingPracticeComponent,
-        HomeComponent,
-        UsersComponent,
-        ServersComponent,
-        UserComponent,
-        EditServerComponent,
-        ServerComponent,
-        NotFoundComponent,
-        ErrorPageComponent,
-    ],
-    imports: [BrowserModule, FormsModule, AppRoutingModule],
-    providers: [
-        AccountService,
-        LoggingService,
-        UserService,
-        CounterService,
-        ServersService,
-        AuthGuard,
-        AuthService,
-        CanDeactivateGuard,
-    ],
-    bootstrap: [AppComponent],
+    // ---------services assignment---------------
+    ServicesAssignmentComponent,
+    ActiveUsersComponent,
+    InactiveUsersComponent,
+    // ---------routing practice------------------
+    RoutingPracticeComponent,
+    HomeComponent,
+    UsersComponent,
+    ServersComponent,
+    UserComponent,
+    EditServerComponent,
+    ServerComponent,
+    NotFoundComponent,
+    ErrorPageComponent,
+  ],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
+  providers: [
+    AccountService,
+    LoggingService,
+    UserService,
+    CounterService,
+    ServersService,
+    AuthGuard,
+    AuthService,
+    CanDeactivateGuard,
+    ServerResolver,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
