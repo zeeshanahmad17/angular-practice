@@ -25,40 +25,41 @@ import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './routingPractice/not-found/not-found.component';
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
-
+import { CanDeactivateGuard } from './routingPractice/servers/edit-server/can-deactivate-guard.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    // ---------services practice-----------------
-    ServicepComponent,
-    NewAccountComponent,
-    AccountComponent,
+    declarations: [
+        AppComponent,
+        // ---------services practice-----------------
+        ServicepComponent,
+        NewAccountComponent,
+        AccountComponent,
 
-    // ---------services assignment---------------
-    ServicesAssignmentComponent,
-    ActiveUsersComponent,
-    InactiveUsersComponent,
-    // ---------routing practice------------------
-    RoutingPracticeComponent,
-    HomeComponent,
-    UsersComponent,
-    ServersComponent,
-    UserComponent,
-    EditServerComponent,
-    ServerComponent,
-    NotFoundComponent,
-  ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
-  providers: [
-    AccountService,
-    LoggingService,
-    UserService,
-    CounterService,
-    ServersService,
-    AuthGuard,
-    AuthService
-  ],
-  bootstrap: [AppComponent],
+        // ---------services assignment---------------
+        ServicesAssignmentComponent,
+        ActiveUsersComponent,
+        InactiveUsersComponent,
+        // ---------routing practice------------------
+        RoutingPracticeComponent,
+        HomeComponent,
+        UsersComponent,
+        ServersComponent,
+        UserComponent,
+        EditServerComponent,
+        ServerComponent,
+        NotFoundComponent,
+    ],
+    imports: [BrowserModule, FormsModule, AppRoutingModule],
+    providers: [
+        AccountService,
+        LoggingService,
+        UserService,
+        CounterService,
+        ServersService,
+        AuthGuard,
+        AuthService,
+        CanDeactivateGuard,
+    ],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

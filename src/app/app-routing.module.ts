@@ -1,14 +1,14 @@
-import { Routes, RouterModule } from "@angular/router";
-import { HomeComponent } from "./routingPractice/home/home.component";
-import { EditServerComponent } from "./routingPractice/servers/edit-server/edit-server.component";
-import { ServerComponent } from "./routingPractice/servers/server/server.component";
-import { ServersComponent } from "./routingPractice/servers/servers.component";
-import { UserComponent } from "./routingPractice/users/user/user.component";
-import { UsersComponent } from "./routingPractice/users/users.component";
-import { NgModule } from "@angular/core";
-import { NotFoundComponent } from "./routingPractice/not-found/not-found.component";
-import { AuthGuard } from "./auth-guard.service";
-
+import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './routingPractice/home/home.component';
+import { EditServerComponent } from './routingPractice/servers/edit-server/edit-server.component';
+import { ServerComponent } from './routingPractice/servers/server/server.component';
+import { ServersComponent } from './routingPractice/servers/servers.component';
+import { UserComponent } from './routingPractice/users/user/user.component';
+import { UsersComponent } from './routingPractice/users/users.component';
+import { NgModule } from '@angular/core';
+import { NotFoundComponent } from './routingPractice/not-found/not-found.component';
+import { AuthGuard } from './auth-guard.service';
+import { CanDeactivateGuard } from './routingPractice/servers/edit-server/can-deactivate-guard.service';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -19,7 +19,11 @@ const appRoutes: Routes = [
         component: ServersComponent,
         children: [
             { path: ':id', component: ServerComponent },
-            { path: ':id/edit', component: EditServerComponent },
+            {
+                path: ':id/edit',
+                component: EditServerComponent,
+                canDeactivate: [CanDeactivateGuard],
+            },
         ],
     },
     {
@@ -29,20 +33,16 @@ const appRoutes: Routes = [
     },
     {
         path: 'not-found',
-        component: NotFoundComponent
+        component: NotFoundComponent,
     },
     {
         path: '**',
-        redirectTo: '/not-found'
-    }
+        redirectTo: '/not-found',
+    },
 ];
 
 @NgModule({
-    imports: [
-        RouterModule.forRoot(appRoutes)
-    ],
-    exports: [
-        RouterModule
-    ]
+    imports: [RouterModule.forRoot(appRoutes)],
+    exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
