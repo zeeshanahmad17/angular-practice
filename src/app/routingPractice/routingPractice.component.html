@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="w-100 text-end">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <!-- {{isLoggedIn ? '' : 'Login'}} -->
+                <i class="{{isLoggedIn?'bi bi-person-check-fill' :'bi-person-fill-x'}}"></i>
+                <!-- <i class="bi bi-person-check-fill" *ngIf="isLoggedIn"></i> -->
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" (click)="onLogin()" *ngIf="!isLoggedIn">Login</a></li>
+                <li><a class="dropdown-item" (click)="onLogout()" *ngIf="isLoggedIn">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <ul class="nav nav-tabs">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" role="tab" routerLink="/" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact: true}">Home</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" role="tab" routerLink="/servers" routerLinkActive="active">Servers</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" role="tab" [routerLink]="['/users']" routerLinkActive="active">Users</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <router-outlet></router-outlet>
+            <!-- <app-home></app-home> -->
+        </div>
+    </div>
+    <!-- <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <app-users></app-users>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <app-servers></app-servers>
+        </div>
+    </div> -->
+</div>

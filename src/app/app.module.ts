@@ -12,6 +12,23 @@ import { ActiveUsersComponent } from './servicesPractice/servicesAssignment/acti
 import { InactiveUsersComponent } from './servicesPractice/servicesAssignment/inactive-users/inactive-users.component';
 import { UserService } from './servicesPractice/servicesAssignment/services/users.service';
 import { CounterService } from './servicesPractice/servicesAssignment/services/counter.service';
+import { RoutingPracticeComponent } from './routingPractice/routingPractice.component';
+import { HomeComponent } from './routingPractice/home/home.component';
+import { UsersComponent } from './routingPractice/users/users.component';
+import { ServersComponent } from './routingPractice/servers/servers.component';
+import { UserComponent } from './routingPractice/users/user/user.component';
+import { EditServerComponent } from './routingPractice/servers/edit-server/edit-server.component';
+import { ServerComponent } from './routingPractice/servers/server/server.component';
+import { ServersService } from './routingPractice/servers/servers.service';
+import { Routes, RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { NotFoundComponent } from './routingPractice/not-found/not-found.component';
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
+import { CanDeactivateGuard } from './routingPractice/servers/edit-server/can-deactivate-guard.service';
+import { ErrorPageComponent } from './routingPractice/error-page/error-page.component';
+import { ServerResolver } from './routingPractice/servers/server/server-resolver.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,13 +37,33 @@ import { CounterService } from './servicesPractice/servicesAssignment/services/c
     NewAccountComponent,
     AccountComponent,
 
-    // ---------services assignment-----------------
+    // ---------services assignment---------------
     ServicesAssignmentComponent,
     ActiveUsersComponent,
     InactiveUsersComponent,
+    // ---------routing practice------------------
+    RoutingPracticeComponent,
+    HomeComponent,
+    UsersComponent,
+    ServersComponent,
+    UserComponent,
+    EditServerComponent,
+    ServerComponent,
+    NotFoundComponent,
+    ErrorPageComponent,
   ],
-  imports: [BrowserModule, FormsModule],
-  providers: [AccountService, LoggingService, UserService, CounterService],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
+  providers: [
+    AccountService,
+    LoggingService,
+    UserService,
+    CounterService,
+    ServersService,
+    AuthGuard,
+    AuthService,
+    CanDeactivateGuard,
+    ServerResolver,
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
