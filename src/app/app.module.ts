@@ -26,6 +26,7 @@ import { NotFoundComponent } from './routingPractice/not-found/not-found.compone
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { CanDeactivateGuard } from './routingPractice/servers/edit-server/can-deactivate-guard.service';
+import { ErrorPageComponent } from './routingPractice/error-page/error-page.component';
 
 @NgModule({
     declarations: [
@@ -48,6 +49,7 @@ import { CanDeactivateGuard } from './routingPractice/servers/edit-server/can-de
         EditServerComponent,
         ServerComponent,
         NotFoundComponent,
+        ErrorPageComponent,
     ],
     imports: [BrowserModule, FormsModule, AppRoutingModule],
     providers: [

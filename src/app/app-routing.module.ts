@@ -9,40 +9,42 @@ import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './routingPractice/not-found/not-found.component';
 import { AuthGuard } from './auth-guard.service';
 import { CanDeactivateGuard } from './routingPractice/servers/edit-server/can-deactivate-guard.service';
+import { ErrorPageComponent } from './routingPractice/error-page/error-page.component';
 
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent },
-    {
-        path: 'servers',
-        // canActivate: [AuthGuard],
-        canActivateChild: [AuthGuard],
-        component: ServersComponent,
-        children: [
-            { path: ':id', component: ServerComponent },
-            {
-                path: ':id/edit',
-                component: EditServerComponent,
-                canDeactivate: [CanDeactivateGuard],
-            },
-        ],
-    },
-    {
-        path: 'users',
-        component: UsersComponent,
-        children: [{ path: ':id/:name', component: UserComponent }],
-    },
-    {
-        path: 'not-found',
-        component: NotFoundComponent,
-    },
-    {
-        path: '**',
-        redirectTo: '/not-found',
-    },
+  { path: '', component: HomeComponent },
+  {
+    path: 'servers',
+    // canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    component: ServersComponent,
+    children: [
+      { path: ':id', component: ServerComponent },
+      {
+        path: ':id/edit',
+        component: EditServerComponent,
+        canDeactivate: [CanDeactivateGuard],
+      },
+    ],
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    children: [{ path: ':id/:name', component: UserComponent }],
+  },
+  {
+    path: 'not-found',
+    component: ErrorPageComponent,
+    data: { message: 'Ah snap! Page Not Found!!!' },
+  },
+  {
+    path: '**',
+    redirectTo: '/not-found',
+  },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
-    exports: [RouterModule],
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
