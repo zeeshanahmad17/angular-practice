@@ -28,6 +28,7 @@ import { AuthService } from './auth.service';
 import { CanDeactivateGuard } from './routingPractice/servers/edit-server/can-deactivate-guard.service';
 import { ErrorPageComponent } from './routingPractice/error-page/error-page.component';
 import { ServerResolver } from './routingPractice/servers/server/server-resolver.service';
+import { FormsPracticeComponent } from './forms-practice/forms-practice.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ServerResolver } from './routingPractice/servers/server/server-resolver
     ServerComponent,
     NotFoundComponent,
     ErrorPageComponent,
+    FormsPracticeComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [
