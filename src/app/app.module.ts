@@ -29,6 +29,7 @@ import { CanDeactivateGuard } from './routingPractice/servers/edit-server/can-de
 import { ErrorPageComponent } from './routingPractice/error-page/error-page.component';
 import { ServerResolver } from './routingPractice/servers/server/server-resolver.service';
 import { FormsPracticeComponent } from './forms-practice/forms-practice.component';
+import { TdformsAssignmentComponent } from './forms-practice/tdforms-assignment/tdforms-assignment.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { FormsPracticeComponent } from './forms-practice/forms-practice.componen
     NotFoundComponent,
     ErrorPageComponent,
     FormsPracticeComponent,
+    TdformsAssignmentComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [
