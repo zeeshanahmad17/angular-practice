@@ -9,7 +9,7 @@ import { UserService } from './services/users.service';
 export class ServicesAssignmentComponent implements OnInit {
   activeUsers: string[];
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.activeUsers = this.userService.activeUsers;
@@ -18,5 +18,4 @@ export class ServicesAssignmentComponent implements OnInit {
   onSetToInactive(id: number) {
     this.userService.setToInactive(id);
   }
-
 }

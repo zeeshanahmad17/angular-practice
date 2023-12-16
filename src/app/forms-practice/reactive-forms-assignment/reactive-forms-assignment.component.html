@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+          <label for="projectName">Project Name</label>
+          <input
+            type="text"
+            id="projectName"
+            class="form-control"
+            formControlName="projectName"
+          />
+          <span
+            *ngIf="
+              !projectForm.get('projectName').valid &&
+              projectForm.get('projectName').touched
+            "
+          >
+            <span
+              *ngIf="
+                projectForm.get('projectName').hasError('isNameForbidden') &&
+                projectForm.get('projectName').touched
+              "
+              class="help-block text-danger"
+            >
+              Name is Forbidden</span
+            >
+          </span>
+        </div>
+        <div class="form-group mb-3">
+          <label for="email">Mail</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            formControlName="email"
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="status">Project Status</label>
+          <select
+            name="status"
+            id="status"
+            class="form-control"
+            formControlName="status"
+          >
+            <option value="stable">Stable</option>
+            <option value="critical">Critical</option>
+            <option value="finished">Finished</option>
+          </select>
+        </div>
+        <div
+          *ngIf="!projectForm.valid && projectForm.touched"
+          class="text-danger mb-2"
+        >
+          Form is invalid
+        </div>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!projectForm.valid"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
