@@ -24,6 +24,7 @@ import { ErrorPageComponent } from './routingPractice/error-page/error-page.comp
 import { FormsPracticeComponent } from './forms-practice/forms-practice.component';
 import { TdformsAssignmentComponent } from './forms-practice/tdforms-assignment/tdforms-assignment.component';
 import { ReactiveFormsComponent } from './forms-practice/reactive-forms/reactive-forms.component';
+import { ReactiveFormsAssignmentComponent } from './forms-practice/reactive-forms-assignment/reactive-forms-assignment.component';
 // Modules
 import { AppRoutingModule } from './app-routing.module';
 // Services
@@ -62,6 +63,7 @@ import { ServerResolver } from './routingPractice/servers/server/server-resolver
     FormsPracticeComponent,
     TdformsAssignmentComponent,
     ReactiveFormsComponent,
+    ReactiveFormsAssignmentComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   providers: [

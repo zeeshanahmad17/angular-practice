@@ -17,9 +17,26 @@
                 !signupForm.get('userData.username').valid &&
                 signupForm.get('userData.username').touched
               "
-              class="help-block text-danger"
             >
-              username is required
+              <span
+                *ngIf="
+                  signupForm.get('userData.username').errors['required'] &&
+                  signupForm.get('userData.username').touched
+                "
+                class="help-block text-danger"
+              >
+                Username is required
+              </span>
+              <span
+                *ngIf="
+                  signupForm.get('userData.username').errors[
+                    'isForbiddenName'
+                  ] && signupForm.get('userData.username').touched
+                "
+                class="help-block text-danger"
+              >
+                Invalid Username
+              </span>
             </span>
           </div>
           <div class="form-group mb-3">
@@ -32,12 +49,21 @@
             />
             <span
               *ngIf="
-                !signupForm.get('userData.email').valid &&
+                signupForm.get('userData.email').hasError('required') &&
                 signupForm.get('userData.email').touched
               "
               class="help-block text-danger"
             >
               email is required
+            </span>
+            <span
+              *ngIf="
+                signupForm.get('userData.email').hasError('emailIsForbidden') &&
+                signupForm.get('userData.email').touched
+              "
+              class="help-block text-danger"
+            >
+              Email is forbidden
             </span>
           </div>
         </div>
@@ -69,21 +95,15 @@
           </div>
         </div>
 
-        <span
+        <!-- <span
           class="d-inline-block mt-3"
           tabindex="0"
           placement="top"
           data-bs-toggle="tooltip"
           [title]="!signupForm.valid ? 'Please fill the form' : ''"
-        >
-          <button
-            class="btn btn-primary"
-            type="submit"
-            [disabled]="!signupForm.valid"
-          >
-            Disabled button
-          </button>
-        </span>
+        > -->
+        <button class="btn btn-primary" type="submit">Disabled button</button>
+        <!-- </span> -->
       </form>
     </div>
   </div>
