@@ -1,0 +1,87 @@
+<div class="accordion mt-3" id="add-employee">
+  <div class="accordion-item">
+    <h2 class="accordion-header rounded-3" id="panel-bankAccountDetail">
+      <button
+        class="accordion-button collapsed fw-bold"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#bank-account-detail"
+        aria-expanded="false"
+        aria-controls="bank-account-detail"
+      >
+        Bank Account Detail
+      </button>
+    </h2>
+    <div
+      id="bank-account-detail"
+      class="accordion-collapse collapse"
+      aria-labelledby="panel-bankAccountDetail"
+    >
+      <div class="accordion-body pt-5">
+        <div class="row gy-4">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="paymentMode">Payment Mode</label>
+              <input
+                type="text"
+                id="paymentMode"
+                class="form-control"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="bankName">Bank Name</label>
+              <input type="text" id="bankName" class="form-control" required />
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="accountNumber">Account Number</label>
+              <input
+                type="text"
+                id="accountNumber"
+                class="form-control"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="phoneNumber">Phone Number</label>
+              <input
+                type="text"
+                id="phoneNumber"
+                class="form-control"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="iban">IBAN</label>
+              <input type="text" id="iban" class="form-control" required />
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="accountTitle">Account Title</label>
+              <input
+                type="text"
+                id="accountTitle"
+                class="form-control"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
