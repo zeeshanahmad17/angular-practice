@@ -37,6 +37,7 @@ import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { CanDeactivateGuard } from './routingPractice/servers/edit-server/can-deactivate-guard.service';
 import { ServerResolver } from './routingPractice/servers/server/server-resolver.service';
+import { FormsExtraComponent } from './forms-practice/forms-extra/forms-extra.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { ServerResolver } from './routingPractice/servers/server/server-resolver
     TdformsAssignmentComponent,
     ReactiveFormsComponent,
     ReactiveFormsAssignmentComponent,
+    FormsExtraComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   providers: [
