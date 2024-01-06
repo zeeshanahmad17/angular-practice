@@ -18,109 +18,214 @@
       aria-labelledby="panelsStayOpen-headingOne"
     >
       <div class="accordion-body pt-5">
-        <div class="row gy-4">
-          <div class="col-md-4">
-            <div class="form-group">
-              <label for="firstname">First Name</label>
+        <div class="mb-5 w-25 mx-auto">
+          <label for="profileImage" class="form-label">Profile Image</label>
+          <input class="form-control" type="file" id="profileImage" />
+        </div>
+        <div class="d-flex gap-5">
+          <div class="row gy-4 w-75">
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="floatingInput"
+                  placeholder=""
+                />
+                <label for="floatingInput">First Name *</label>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="floatingInput"
+                  placeholder=""
+                />
+                <label for="floatingInput">Last Name *</label>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                <select
+                  class="form-select"
+                  id="floatingSelect"
+                  aria-label="Floating label select example"
+                >
+                  <option selected value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+                <label for="floatingSelect">Gender *</label>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="floatingInput"
+                  placeholder=""
+                />
+                <label for="floatingInput">CNIC *</label>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="date"
+                  class="form-control"
+                  id="floatingInput"
+                  placeholder=""
+                />
+                <label for="floatingInput">Date of Birth</label>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="floatingInput"
+                  placeholder=""
+                />
+                <label for="floatingInput">Contact</label>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="email"
+                  class="form-control is-invalid"
+                  id="floatingInput"
+                  placeholder=""
+                />
+                <label for="floatingInput">Email *</label>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="floatingInput"
+                  placeholder=""
+                />
+                <label for="floatingInput">Country *</label>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                <select
+                  class="form-select"
+                  id="floatingState"
+                  aria-label="Floating state"
+                >
+                  <option selected value="punjab">Punjab</option>
+                  <option value="sindh">Sindh</option>
+                  <option value="kpk">KPK</option>
+                </select>
+                <label for="floatingState">State / Province</label>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                <select
+                  class="form-select"
+                  id="floatingCity"
+                  aria-label="Floating city"
+                >
+                  <option selected value="lahore">Lahore</option>
+                  <option value="gujranwala">Gujranwala</option>
+                  <option value="islamabad">Islamabad</option>
+                </select>
+                <label for="floatingCity">City</label>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="floatingAddress"
+                  placeholder=""
+                />
+                <label for="floatingAddress">Address</label>
+              </div>
+            </div>
+
+            <div class="col-md-6 d-flex align-items-center">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="filer"
+                />
+                <label class="form-check-label" for="filer"> Filer </label>
+              </div>
+            </div>
+          </div>
+          <div style="width: '437px'; position: relative">
+            <label for="cnicImage" class="form-label">CNIC Image</label>
+            <input class="form-control" type="file" id="cnicImage" />
+          </div>
+          <!-- <div style="width: '337px'; position: relative">
+            <div
+              class="d-flex align-items-center justify-content-center"
+              style="
+                position: absolute;
+                top: 2px;
+                right: 2px;
+                height: 24px;
+                width: 24px;
+                border-radius: 50%;
+                padding: 7px;
+                z-index: 9;
+              "
+            >
+              <span
+                class="position-absolute top-0 end-0 bg-danger rounded-circle p-2"
+              >
+                <i class="fas fa-times"></i>
+              </span>
+            </div>
+            <div>
               <input
-                type="text"
-                id="firstname"
-                class="form-control"
-                required
-                placeholder="John"
+                hidden
+                accept=".jpg, .jpeg, .png"
+                type="file"
+                id="CNICImage"
+                name="CNICImage"
               />
+              <img alt="CNIC " width="100%" height="100%" />
+              <span
+                style="
+                  height: 48px;
+                  width: 48px;
+                  border-radius: 50%;
+                  padding: 5px;
+                  cursor: pointer;
+                  position: absolute;
+                "
+              >
+                <i class="fa-solid fa-plus"></i>
+              </span>
+              <h4>Upload a valid copy of your CNIC</h4>
+              <h4>JPG & PNG formats are supported</h4>
             </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="form-group">
-              <label for="lastname">Last Name</label>
-              <input
-                type="text"
-                id="lastname"
-                class="form-control"
-                required
-                placeholder="Smith"
-              />
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <label for="gender">Gender</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div class="col-md-4">
-            <div class="form-group">
-              <label for="cnic">CNIC</label>
-              <input type="number" id="cnic" class="form-control" required />
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="form-group">
-              <label for="dob">Date of Birth</label>
-              <input type="date" id="dob" class="form-control" required />
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="form-group">
-              <label for="contact">Contact</label>
-              <input type="number" id="contact" class="form-control" required />
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" class="form-control" required />
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="form-group">
-              <label for="country">Country</label>
-              <input type="text" id="country" class="form-control" required />
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="form-group">
-              <label for="province">Province / State</label>
-              <input type="text" id="province" class="form-control" required />
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="form-group">
-              <label for="city">City</label>
-              <input type="text" id="city" class="form-control" required />
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="form-group">
-              <label for="address">Address</label>
-              <input type="text" id="address" class="form-control" required />
-            </div>
-          </div>
-
-          <div class="col-md-4 d-flex align-items-end">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="filer"
-              />
-              <label class="form-check-label" for="filer"> Filer </label>
-            </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

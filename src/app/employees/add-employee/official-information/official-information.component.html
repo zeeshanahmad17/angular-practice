@@ -20,95 +20,115 @@
       <div class="accordion-body pt-5">
         <div class="row gy-4">
           <div class="col-md-4">
-            <div class="form-group">
-              <label for="jobType">Job Type</label>
-              <input type="text" id="jobType" class="form-control" required />
+            <div class="form-floating">
+              <select class="form-select" id="jobType" aria-label="job type">
+                <option selected value="full time">Full Time</option>
+                <option value="part time">Part Time</option>
+              </select>
+              <label for="jobType">Jop Type *</label>
             </div>
           </div>
 
           <div class="col-md-4">
-            <div class="form-group">
-              <label for="department">Department</label>
-              <input
-                type="text"
+            <div class="form-floating">
+              <select
+                class="form-select"
                 id="department"
-                class="form-control"
-                required
-              />
+                aria-label="department"
+              >
+                <option selected value="website development">
+                  Website Development
+                </option>
+                <option value="sqa">SQA</option>
+              </select>
+              <label for="department">Department *</label>
             </div>
           </div>
 
           <div class="col-md-4">
-            <div class="form-group">
-              <label for="designation">Designation</label>
-              <input
-                type="text"
+            <div class="form-floating">
+              <select
+                class="form-select"
                 id="designation"
-                class="form-control"
-                required
-              />
+                aria-label="designation"
+              >
+                <option selected value="jr developer">Jr. Developer</option>
+                <option value="sqa engineer">SQA Engineer</option>
+              </select>
+              <label for="designation">Designation *</label>
             </div>
           </div>
 
           <div class="col-md-4">
-            <div class="form-group">
-              <label for="reportingManager">Reporting Manager</label>
-              <input
-                type="text"
-                id="reportingManager"
-                class="form-control"
-                required
-              />
+            <div class="form-floating">
+              <select class="form-select" id="manager" aria-label="manager">
+                <option selected value="safdar">Safdar</option>
+                <option value="haider">Haider</option>
+              </select>
+              <label for="manager">Reporting Manager</label>
             </div>
           </div>
 
           <div class="col-md-4">
-            <div class="form-group">
-              <label for="hireDate">Hire Date</label>
-              <input type="date" id="hireDate" class="form-control" required />
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="form-group">
-              <label for="joiningDate">Joining Date</label>
+            <div class="form-floating">
               <input
                 type="date"
+                class="form-control"
+                id="hireDate"
+                placeholder=""
+              />
+              <label for="hireDate">Hire Date</label>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-floating">
+              <input
+                type="date"
+                class="form-control"
                 id="joiningDate"
-                class="form-control"
-                required
+                placeholder=""
               />
+              <label for="joiningDate">Joining Date</label>
             </div>
           </div>
 
           <div class="col-md-4">
-            <div class="form-group">
-              <label for="employeeType">Employee Type</label>
-              <input
-                type="text"
+            <div class="form-floating">
+              <select
+                class="form-select"
                 id="employeeType"
-                class="form-control"
-                required
-              />
+                aria-label="employeeType"
+              >
+                <option selected value="permanent">Permanent</option>
+                <option value="contract">Contract</option>
+                <option value="internship">Internship</option>
+              </select>
+              <label for="employeeType">Employee Type</label>
             </div>
           </div>
 
           <div class="col-md-4">
-            <div class="form-group">
-              <label for="probationDuration">Probation Duration (Months)</label>
+            <div class="form-floating">
               <input
-                type="text"
-                id="probationDuration"
+                type="number"
                 class="form-control"
-                required
+                id="probation"
+                placeholder=""
               />
+              <label for="probation">Probation Duration (Months)</label>
             </div>
           </div>
 
           <div class="col-md-4">
-            <div class="form-group">
+            <div class="form-floating">
+              <input
+                type="date"
+                class="form-control"
+                id="endDate"
+                placeholder=""
+              />
               <label for="endDate">End Date</label>
-              <input type="date" id="endDate" class="form-control" required />
             </div>
           </div>
         </div>
