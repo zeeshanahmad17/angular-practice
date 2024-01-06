@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-personal-information',
   templateUrl: './personal-information.component.html',
-  styleUrls: ['./personal-information.component.css']
+  styleUrls: ['./personal-information.component.css'],
 })
 export class PersonalInformationComponent {
-
+  @Input() formGroup: FormGroup;
 }
