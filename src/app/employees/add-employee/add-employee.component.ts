@@ -20,7 +20,7 @@ export class AddEmployeeComponent implements OnInit {
       profileImage: new FormControl(null),
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
-      gender: new FormControl('male', [Validators.required]),
+      gender: new FormControl('female', [Validators.required]),
       cnic: new FormControl(null, [Validators.required]),
       dob: new FormControl(null),
       contact: new FormControl(null),
@@ -34,7 +34,17 @@ export class AddEmployeeComponent implements OnInit {
     });
 
     // Initialize form controls for official information
-    this.officialInformationForm = new FormGroup({});
+    this.officialInformationForm = new FormGroup({
+      jobType: new FormControl('partTime', [Validators.required]),
+      department: new FormControl('websiteDevelopment', [Validators.required]),
+      designation: new FormControl('jrDeveloper', [Validators.required]),
+      manager: new FormControl(''),
+      hireDate: new FormControl(null, [Validators.required]),
+      joiningDate: new FormControl(null, [Validators.required]),
+      employeeType: new FormControl('permanent', [Validators.required]),
+      probation: new FormControl(null),
+      endDate: new FormControl(null), // required if employeeType is permanent
+    });
 
     // Initialize form controls for bank account details
     this.bankAccountDetailForm = new FormGroup({});
