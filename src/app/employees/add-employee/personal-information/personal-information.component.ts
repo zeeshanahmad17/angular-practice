@@ -7,5 +7,5 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./personal-information.component.css'],
 })
 export class PersonalInformationComponent {
-  @Input() formGroup: FormGroup;
+  @Input() personalFormGroup: FormGroup;
 }

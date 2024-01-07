@@ -1,16 +1,20 @@
 <div class="my-4">
   <app-personal-information
-    [formGroup]="personalInformationForm"
+    [personalFormGroup]="personalInformationForm"
   ></app-personal-information>
-  <app-official-information></app-official-information>
-  <app-bank-account-detail></app-bank-account-detail>
-  <app-salary-detail></app-salary-detail>
+  <app-official-information
+    [officialFormGroup]="officialInformationForm"
+  ></app-official-information>
+  <app-bank-account-detail
+    [bankAccountFormGroup]="bankAccountDetailForm"
+  ></app-bank-account-detail>
+  <app-salary-detail [salaryFormGroup]="salaryDetailForm"></app-salary-detail>
 
   <button
-    class="btn btn-success"
+    class="btn btn-success my-4"
     type="button"
     (click)="handleUpdateEmployee()"
   >
-    Submit
+    Save Details
   </button>
 </div>

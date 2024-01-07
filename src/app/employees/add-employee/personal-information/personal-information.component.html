@@ -2,13 +2,23 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
       <button
-        class="accordion-button fw-bold"
+        class="accordion-button fw-bold d-flex gap-3"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#panelsStayOpen-collapseOne"
         aria-expanded="true"
         aria-controls="panelsStayOpen-collapseOne"
       >
+        <span>
+          <i
+            *ngIf="!personalFormGroup.valid"
+            class="fa-solid fa-circle-info text-warning"
+          ></i>
+          <i
+            *ngIf="personalFormGroup.valid"
+            class="fa-solid fa-circle-check text-success"
+          ></i>
+        </span>
         Personal Information
       </button>
     </h2>
@@ -18,10 +28,15 @@
       aria-labelledby="panelsStayOpen-headingOne"
     >
       <div class="accordion-body pt-5">
-        <form [formGroup]="formGroup">
+        <form [formGroup]="personalFormGroup">
           <div class="mb-5 w-25 mx-auto">
             <label for="profileImage" class="form-label">Profile Image</label>
-            <input class="form-control" type="file" id="profileImage" />
+            <input
+              class="form-control"
+              type="file"
+              id="profileImage"
+              formControlName="profileImage"
+            />
           </div>
           <div class="d-flex gap-5">
             <div class="row gy-4 w-75">
@@ -53,7 +68,12 @@
 
               <div class="col-md-6">
                 <div class="form-floating">
-                  <select class="form-select" id="gender" aria-label="gender">
+                  <select
+                    class="form-select"
+                    id="gender"
+                    aria-label="gender"
+                    formControlName="gender"
+                  >
                     <option selected value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="other">Other</option>
@@ -69,6 +89,7 @@
                     class="form-control"
                     id="cnic"
                     placeholder=""
+                    formControlName="cnic"
                   />
                   <label for="cnic">CNIC *</label>
                 </div>
@@ -81,6 +102,7 @@
                     class="form-control"
                     id="dob"
                     placeholder=""
+                    formControlName="dob"
                   />
                   <label for="dob">Date of Birth</label>
                 </div>
@@ -93,6 +115,7 @@
                     class="form-control"
                     id="contact"
                     placeholder=""
+                    formControlName="contact"
                   />
                   <label for="contact">Contact</label>
                 </div>
@@ -102,9 +125,14 @@
                 <div class="form-floating">
                   <input
                     type="email"
-                    class="form-control is-invalid"
+                    class="form-control"
+                    [class.is-invalid]="
+                      !personalFormGroup.get('email').valid &&
+                      personalFormGroup.get('email').touched
+                    "
                     id="email"
                     placeholder=""
+                    formControlName="email"
                   />
                   <label for="email">Email *</label>
                 </div>
@@ -112,13 +140,15 @@
 
               <div class="col-md-6">
                 <div class="form-floating">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="country"
-                    placeholder=""
-                  />
-                  <label for="country">Country *</label>
+                  <select
+                    class="form-select"
+                    id="floatingCountry"
+                    aria-label="Floating country"
+                    formControlName="country"
+                  >
+                    <option selected value="pakistan">Pakistan</option>
+                  </select>
+                  <label for="floatingCountry">Country *</label>
                 </div>
               </div>
 
@@ -128,6 +158,7 @@
                     class="form-select"
                     id="floatingState"
                     aria-label="Floating state"
+                    formControlName="province"
                   >
                     <option selected value="punjab">Punjab</option>
                     <option value="sindh">Sindh</option>
@@ -143,6 +174,7 @@
                     class="form-select"
                     id="floatingCity"
                     aria-label="Floating city"
+                    formControlName="city"
                   >
                     <option selected value="lahore">Lahore</option>
                     <option value="gujranwala">Gujranwala</option>
@@ -159,6 +191,7 @@
                     class="form-control"
                     id="floatingAddress"
                     placeholder=""
+                    formControlName="address"
                   />
                   <label for="floatingAddress">Address</label>
                 </div>
@@ -171,14 +204,20 @@
                     type="checkbox"
                     value=""
                     id="filer"
+                    formControlName="filer"
                   />
                   <label class="form-check-label" for="filer"> Filer </label>
                 </div>
               </div>
             </div>
             <div style="width: '437px'; position: relative">
-              <label for="cnicImage" class="form-label">CNIC Image</label>
-              <input class="form-control" type="file" id="cnicImage" />
+              <label for="cnicImage" class="form-label">CNIC Image *</label>
+              <input
+                class="form-control"
+                type="file"
+                id="cnicImage"
+                formControlName="cnicImage"
+              />
             </div>
             <!-- <div style="width: '337px'; position: relative">
             <div
