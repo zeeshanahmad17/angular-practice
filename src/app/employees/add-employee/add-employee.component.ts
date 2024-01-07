@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+// Forms Imports
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+// Services
+import { DepartmentService } from '../services/department.service';
 
 @Component({
   selector: 'app-add-employee',
@@ -7,14 +10,19 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-employee.component.css'],
 })
 export class AddEmployeeComponent implements OnInit {
+  departments: any[];
+  designations: any[];
+
   personalInformationForm: FormGroup;
   officialInformationForm: FormGroup;
   bankAccountDetailForm: FormGroup;
   salaryDetailForm: FormGroup;
 
-  constructor() {}
+  constructor(private deparmentService: DepartmentService) {}
 
   ngOnInit() {
+    this.departments = this.deparmentService.getDepartments();
+
     // Initialize form controls for personal information
     this.personalInformationForm = new FormGroup({
       profileImage: new FormControl(null),

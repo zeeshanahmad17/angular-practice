@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 // Forms Imports
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Routing Imports
@@ -43,6 +44,7 @@ import { PersonalInformationComponent } from './employees/add-employee/personal-
 import { OfficialInformationComponent } from './employees/add-employee/official-information/official-information.component';
 import { BankAccountDetailComponent } from './employees/add-employee/bank-account-detail/bank-account-detail.component';
 import { SalaryDetailComponent } from './employees/add-employee/salary-detail/salary-detail.component';
+import { DepartmentService } from './employees/services/department.service';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,14 @@ import { SalaryDetailComponent } from './employees/add-employee/salary-detail/sa
     BankAccountDetailComponent,
     SalaryDetailComponent,
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
+  ],
   providers: [
     AccountService,
     LoggingService,
@@ -88,6 +97,8 @@ import { SalaryDetailComponent } from './employees/add-employee/salary-detail/sa
     AuthService,
     CanDeactivateGuard,
     ServerResolver,
+    DepartmentService,
+    provideNgxMask(),
   ],
   bootstrap: [AppComponent],
 })
