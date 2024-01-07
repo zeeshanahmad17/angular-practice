@@ -1,6 +1,26 @@
 <div class="my-4">
-  <app-personal-information></app-personal-information>
-  <app-official-information></app-official-information>
-  <app-bank-account-detail></app-bank-account-detail>
-  <app-salary-detail></app-salary-detail>
+  <app-personal-information
+    [personalFormGroup]="personalInformationForm"
+  ></app-personal-information>
+  <app-official-information
+    [officialFormGroup]="officialInformationForm"
+  ></app-official-information>
+  <app-bank-account-detail
+    [bankAccountFormGroup]="bankAccountDetailForm"
+  ></app-bank-account-detail>
+  <app-salary-detail [salaryFormGroup]="salaryDetailForm"></app-salary-detail>
+
+  <button
+    class="btn btn-success my-4"
+    type="button"
+    (click)="handleUpdateEmployee()"
+    [disabled]="
+      personalInformationForm.invalid ||
+      officialInformationForm.invalid ||
+      bankAccountDetailForm.invalid ||
+      salaryDetailForm.invalid
+    "
+  >
+    Save Details
+  </button>
 </div>
