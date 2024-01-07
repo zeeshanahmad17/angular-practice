@@ -2,13 +2,23 @@
   <div class="accordion-item">
     <h2 class="accordion-header rounded-3" id="panel-bankAccountDetail">
       <button
-        class="accordion-button collapsed fw-bold"
+        class="accordion-button collapsed fw-bold gap-3"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#bank-account-detail"
         aria-expanded="false"
         aria-controls="bank-account-detail"
       >
+        <span>
+          <i
+            *ngIf="!bankAccountFormGroup.valid"
+            class="fa-solid fa-circle-info text-warning"
+          ></i>
+          <i
+            *ngIf="bankAccountFormGroup.valid"
+            class="fa-solid fa-circle-check text-success"
+          ></i>
+        </span>
         Bank Account Detail
       </button>
     </h2>
@@ -18,82 +28,90 @@
       aria-labelledby="panel-bankAccountDetail"
     >
       <div class="accordion-body pt-5">
-        <div class="row gy-4">
-          <div class="col-md-4">
-            <div class="form-floating">
-              <select
-                class="form-select"
-                id="paymentMode"
-                aria-label="paymentMode"
-              >
-                <option selected value="bank">Bank Transfer</option>
-                <option value="mfb">Microfinance Bank</option>
-                <option value="cash">Cash</option>
-              </select>
-              <label for="paymentMode">Payment Mode *</label>
+        <form [formGroup]="bankAccountFormGroup">
+          <div class="row gy-4">
+            <div class="col-md-4">
+              <div class="form-floating">
+                <select
+                  class="form-select"
+                  id="paymentMode"
+                  aria-label="paymentMode"
+                  formControlName="paymentMode"
+                >
+                  <option selected value="bank">Bank Transfer</option>
+                  <option value="mfb">Microfinance Bank</option>
+                  <option value="cash">Cash</option>
+                </select>
+                <label for="paymentMode">Payment Mode *</label>
+              </div>
             </div>
-          </div>
 
-          <div class="col-md-4">
-            <div class="form-floating">
-              <input
-                type="text"
-                class="form-control"
-                id="bankName"
-                placeholder=""
-              />
-              <label for="bankName">Bank Name *</label>
+            <div class="col-md-4">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="bankName"
+                  placeholder=""
+                  formControlName="bankName"
+                />
+                <label for="bankName">Bank Name *</label>
+              </div>
             </div>
-          </div>
 
-          <div class="col-md-4">
-            <div class="form-floating">
-              <input
-                type="number"
-                class="form-control"
-                id="accountNumber"
-                placeholder=""
-              />
-              <label for="accountNumber">Account Number *</label>
+            <div class="col-md-4">
+              <div class="form-floating">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="accountNumber"
+                  placeholder=""
+                  formControlName="accountNumber"
+                />
+                <label for="accountNumber">Account Number *</label>
+              </div>
             </div>
-          </div>
 
-          <div class="col-md-4">
-            <div class="form-floating">
-              <input
-                type="number"
-                class="form-control"
-                id="phoneNumber"
-                placeholder=""
-              />
-              <label for="phoneNumber">Phone Number *</label>
+            <div class="col-md-4">
+              <div class="form-floating">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="phoneNumber"
+                  placeholder=""
+                  formControlName="phoneNumber"
+                />
+                <label for="phoneNumber">Phone Number *</label>
+              </div>
             </div>
-          </div>
 
-          <div class="col-md-4">
-            <div class="form-floating">
-              <input
-                type="text"
-                class="form-control"
-                id="iban"
-                placeholder=""
-              />
-              <label for="iban">IBAN</label>
+            <div class="col-md-4">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="iban"
+                  placeholder=""
+                  formControlName="iban"
+                />
+                <label for="iban">IBAN</label>
+              </div>
             </div>
-          </div>
 
-          <div class="col-md-4">
-            <div class="form-floating">
-              <input
-                type="text"
-                class="form-control"
-                id="accountTitle"
-                placeholder=""
-              />
-              <label for="accountTitle">Account Title *</label>
+            <div class="col-md-4">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="accountTitle"
+                  placeholder=""
+                  formControlName="accountTitle"
+                />
+                <label for="accountTitle">Account Title *</label>
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
