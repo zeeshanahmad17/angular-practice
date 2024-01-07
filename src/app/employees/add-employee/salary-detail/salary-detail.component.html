@@ -2,92 +2,76 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="panel-salaryDetail">
       <button
-        class="accordion-button collapsed fw-bold"
+        class="accordion-button collapsed fw-bold gap-3"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#salary-detail"
         aria-expanded="false"
         aria-controls="salary-detail"
       >
+        <span>
+          <i
+            *ngIf="!salaryFormGroup.valid"
+            class="fa-solid fa-circle-info text-warning"
+          ></i>
+          <i
+            *ngIf="salaryFormGroup.valid"
+            class="fa-solid fa-circle-check text-success"
+          ></i>
+        </span>
         Salary Detail
       </button>
     </h2>
     <div
       id="salary-detail"
-      class="accordion-collapse collapse"
+      class="accordion-collapse collapse show"
       aria-labelledby="panel-salaryDetail"
     >
       <div class="accordion-body pt-5">
-        <div class="row gy-4">
-          <div class="col-md-4">
-            <<<<<<< HEAD
-            <div class="form-group">
-              <label for="amount">Amount</label>
-              <input type="number" id="amount" class="form-control" required />
-              =======
+        <form [formGroup]="salaryFormGroup">
+          <div class="row gy-4">
+            <div class="col-md-4">
               <div class="form-floating">
                 <input
                   type="number"
                   class="form-control"
                   id="amount"
                   placeholder=""
+                  formControlName="amount"
                 />
                 <label for="amount">Amount *</label>
-                >>>>>>> feature/implement-add-employee
               </div>
             </div>
 
             <div class="col-md-4">
-              <<<<<<< HEAD
-              <div class="form-group">
-                <label for="payrollType">Payroll Type</label>
-                <input
-                  type="text"
+              <div class="form-floating">
+                <select
+                  class="form-select"
                   id="payrollType"
-                  class="form-control"
-                  required
-                />
-                =======
-                <div class="form-floating">
-                  <select
-                    class="form-select"
-                    id="payrollType"
-                    aria-label="payrollType"
-                  >
-                    <option selected value="monthly">Monthly</option>
-                  </select>
-                  <label for="payrollType">Payroll Type *</label>
-                  >>>>>>> feature/implement-add-employee
-                </div>
+                  aria-label="payrollType"
+                  formControlName="payrollType"
+                >
+                  <option selected value="monthly">Monthly</option>
+                </select>
+                <label for="payrollType">Payroll Type *</label>
               </div>
+            </div>
 
-              <div class="col-md-4">
-                <<<<<<< HEAD
-                <div class="form-group">
-                  <label for="currencyType">Currency Type</label>
-                  <input
-                    type="text"
-                    id="currencyType"
-                    class="form-control"
-                    required
-                  />
-                  =======
-                  <div class="form-floating">
-                    <select
-                      class="form-select"
-                      id="currencyType"
-                      aria-label="currencyType"
-                    >
-                      <option selected value="rs">Rs</option>
-                    </select>
-                    <label for="currencyType">Currency Type</label>
-                    >>>>>>> feature/implement-add-employee
-                  </div>
-                </div>
+            <div class="col-md-4">
+              <div class="form-floating">
+                <select
+                  class="form-select"
+                  id="currencyType"
+                  aria-label="currencyType"
+                  formControlName="currencyType"
+                >
+                  <option selected value="rs">Rs</option>
+                </select>
+                <label for="currencyType">Currency Type</label>
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>

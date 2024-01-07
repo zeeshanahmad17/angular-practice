@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+// Forms Imports
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+// Services
+import { DepartmentService } from '../services/department.service';
 
 @Component({
   selector: 'app-add-employee',
@@ -7,14 +10,19 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-employee.component.css'],
 })
 export class AddEmployeeComponent implements OnInit {
+  departments: any[];
+  designations: any[];
+
   personalInformationForm: FormGroup;
   officialInformationForm: FormGroup;
   bankAccountDetailForm: FormGroup;
   salaryDetailForm: FormGroup;
 
-  constructor() {}
+  constructor(private deparmentService: DepartmentService) {}
 
   ngOnInit() {
+    this.departments = this.deparmentService.getDepartments();
+
     // Initialize form controls for personal information
     this.personalInformationForm = new FormGroup({
       profileImage: new FormControl(null),
@@ -47,15 +55,30 @@ export class AddEmployeeComponent implements OnInit {
     });
 
     // Initialize form controls for bank account details
-    this.bankAccountDetailForm = new FormGroup({});
+    this.bankAccountDetailForm = new FormGroup({
+      paymentMode: new FormControl('cash', [Validators.required]),
+      bankName: new FormControl('', [Validators.required]),
+      accountNumber: new FormControl(null, [Validators.required]),
+      phoneNumber: new FormControl(null, [Validators.required]),
+      iban: new FormControl(''),
+      accountTitle: new FormControl('', [Validators.required]),
+    });
 
     // Initialize form controls for salary details
-    this.salaryDetailForm = new FormGroup({});
+    this.salaryDetailForm = new FormGroup({
+      amount: new FormControl(null, [Validators.required]),
+      payrollType: new FormControl('monthly', [Validators.required]),
+      currencyType: new FormControl('rs', [Validators.required]),
+    });
   }
 
   handleUpdateEmployee() {
-    // Handle update logic
-    const personalInfoFormData = this.personalInformationForm.value;
-    // You can now use personalInfoFormData for further processing or API calls
+    const userData = {
+      personalInformation: this.personalInformationForm.value,
+      officialInformation: this.officialInformationForm.value,
+      bankDetails: this.bankAccountDetailForm.value,
+      salaryDetails: this.salaryDetailForm.value,
+    };
+    console.log(userData);
   }
 }
