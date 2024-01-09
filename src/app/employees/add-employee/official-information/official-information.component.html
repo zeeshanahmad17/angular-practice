@@ -11,11 +11,11 @@
       >
         <span>
           <i
-            *ngIf="!officialFormGroup.valid"
+            *ngIf="!officialInformationForm.valid"
             class="fa-solid fa-circle-info text-warning"
           ></i>
           <i
-            *ngIf="officialFormGroup.valid"
+            *ngIf="officialInformationForm.valid"
             class="fa-solid fa-circle-check text-success"
           ></i>
         </span>
@@ -28,7 +28,7 @@
       aria-labelledby="panel-officialInformation"
     >
       <div class="accordion-body pt-5">
-        <form [formGroup]="officialFormGroup">
+        <form [formGroup]="officialInformationForm">
           <div class="row gy-4">
             <div class="col-md-4">
               <div class="form-floating">

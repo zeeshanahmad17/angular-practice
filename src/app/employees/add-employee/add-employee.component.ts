@@ -3,7 +3,11 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 // Services
 import { DepartmentService } from '../services/department.service';
+// Components
 import { SalaryDetailComponent } from './salary-detail/salary-detail.component';
+import { PersonalInformationComponent } from './personal-information/personal-information.component';
+import { OfficialInformationComponent } from './official-information/official-information.component';
+import { BankAccountDetailComponent } from './bank-account-detail/bank-account-detail.component';
 
 @Component({
   selector: 'app-add-employee',
@@ -11,74 +15,59 @@ import { SalaryDetailComponent } from './salary-detail/salary-detail.component';
   styleUrls: ['./add-employee.component.css'],
 })
 export class AddEmployeeComponent implements OnInit, AfterViewInit {
+  @ViewChild(PersonalInformationComponent)
+  personalComponent: PersonalInformationComponent;
+
+  @ViewChild(OfficialInformationComponent)
+  officialComponent: OfficialInformationComponent;
+
+  @ViewChild(BankAccountDetailComponent)
+  bankAccountComponent: BankAccountDetailComponent;
+
   @ViewChild(SalaryDetailComponent) salaryComponent: SalaryDetailComponent;
+
+  isInvalid: boolean = true;
   departments: any[];
   designations: any[];
-
-  personalInformationForm: FormGroup;
-  officialInformationForm: FormGroup;
-  bankAccountDetailForm: FormGroup;
-  // salaryDetailForm: FormGroup;
 
   constructor(private deparmentService: DepartmentService) {}
 
   ngOnInit() {
     this.departments = this.deparmentService.getDepartments();
-
-    // Initialize form controls for personal information
-    this.personalInformationForm = new FormGroup({
-      profileImage: new FormControl(null),
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
-      gender: new FormControl('female', [Validators.required]),
-      cnic: new FormControl(null, [Validators.required]),
-      dob: new FormControl(null),
-      contact: new FormControl(null),
-      email: new FormControl('', [Validators.required]),
-      country: new FormControl('pakistan', [Validators.required]),
-      province: new FormControl(''),
-      city: new FormControl(''),
-      address: new FormControl(''),
-      filer: new FormControl(false),
-      cnicImage: new FormControl(null, [Validators.required]),
-    });
-
-    // Initialize form controls for official information
-    this.officialInformationForm = new FormGroup({
-      jobType: new FormControl('partTime', [Validators.required]),
-      department: new FormControl('websiteDevelopment', [Validators.required]),
-      designation: new FormControl('jrDeveloper', [Validators.required]),
-      manager: new FormControl(''),
-      hireDate: new FormControl(null, [Validators.required]),
-      joiningDate: new FormControl(null, [Validators.required]),
-      employeeType: new FormControl('permanent', [Validators.required]),
-      probation: new FormControl(null),
-      endDate: new FormControl(null), // required if employeeType is permanent
-    });
-
-    // Initialize form controls for bank account details
-    this.bankAccountDetailForm = new FormGroup({
-      paymentMode: new FormControl('cash', [Validators.required]),
-      bankName: new FormControl('', [Validators.required]),
-      accountNumber: new FormControl(null, [Validators.required]),
-      phoneNumber: new FormControl(null, [Validators.required]),
-      iban: new FormControl(''),
-      accountTitle: new FormControl('', [Validators.required]),
-    });
-
-    // Access the salaryFormGroup from the SalaryDetailComponent
-    console.log(this.salaryComponent.salaryFormGroup);
   }
   ngAfterViewInit() {
-    // Access the salaryFormGroup from the SalaryDetailComponent
-    console.log(this.salaryComponent.salaryFormGroup);
+    this.personalComponent.personalInformationForm.valueChanges.subscribe(() =>
+      this.checkValidity()
+    );
+
+    this.officialComponent.officialInformationForm.valueChanges.subscribe(() =>
+      this.checkValidity()
+    );
+    this.bankAccountComponent.bankAccountFormGroup.valueChanges.subscribe(() =>
+      this.checkValidity()
+    );
+
+    this.salaryComponent.salaryFormGroup.valueChanges.subscribe(() =>
+      this.checkValidity()
+    );
   }
+
+  checkValidity() {
+    this.isInvalid =
+      this.personalComponent.personalInformationForm.invalid ||
+      this.officialComponent.officialInformationForm.invalid ||
+      this.bankAccountComponent.bankAccountFormGroup.invalid ||
+      this.salaryComponent.salaryFormGroup.invalid;
+  }
+
   handleUpdateEmployee() {
-    const userData = {
-      personalInformation: this.personalInformationForm.value,
-      officialInformation: this.officialInformationForm.value,
-      bankDetails: this.bankAccountDetailForm.value,
+    const data = {
+      personalInformation: this.personalComponent.personalInformationForm.value,
+      officialInformation: this.officialComponent.officialInformationForm.value,
+      bankAccountInformation:
+        this.bankAccountComponent.bankAccountFormGroup.value,
+      salaryInformation: this.salaryComponent.salaryFormGroup.value,
     };
-    console.log(userData);
+    console.log(data);
   }
 }

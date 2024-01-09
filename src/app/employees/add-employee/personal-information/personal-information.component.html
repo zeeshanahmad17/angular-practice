@@ -11,11 +11,11 @@
       >
         <span>
           <i
-            *ngIf="!personalFormGroup.valid"
+            *ngIf="!personalInformationForm.valid"
             class="fa-solid fa-circle-info text-warning"
           ></i>
           <i
-            *ngIf="personalFormGroup.valid"
+            *ngIf="personalInformationForm.valid"
             class="fa-solid fa-circle-check text-success"
           ></i>
         </span>
@@ -28,7 +28,7 @@
       aria-labelledby="panelsStayOpen-headingOne"
     >
       <div class="accordion-body pt-5">
-        <form [formGroup]="personalFormGroup">
+        <form [formGroup]="personalInformationForm">
           <div class="mb-5 w-25 mx-auto">
             <label for="profileImage" class="form-label">Profile Image</label>
             <input
@@ -90,7 +90,6 @@
                     id="cnic"
                     placeholder=""
                     formControlName="cnic"
-                    [mask]="'xxxxx-xxxxxxx-x'"
                   />
                   <label for="cnic">CNIC *</label>
                 </div>
@@ -128,8 +127,8 @@
                     type="email"
                     class="form-control"
                     [class.is-invalid]="
-                      !personalFormGroup.get('email').valid &&
-                      personalFormGroup.get('email').touched
+                      !personalInformationForm.get('email').valid &&
+                      personalInformationForm.get('email').touched
                     "
                     id="email"
                     placeholder=""
