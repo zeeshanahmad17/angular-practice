@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 // Forms Imports
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 // Services
 import { DepartmentService } from '../services/department.service';
+import { SalaryDetailComponent } from './salary-detail/salary-detail.component';
 
 @Component({
   selector: 'app-add-employee',
   templateUrl: './add-employee.component.html',
   styleUrls: ['./add-employee.component.css'],
 })
-export class AddEmployeeComponent implements OnInit {
+export class AddEmployeeComponent implements OnInit, AfterViewInit {
+  @ViewChild(SalaryDetailComponent) salaryComponent: SalaryDetailComponent;
   departments: any[];
   designations: any[];
 
   personalInformationForm: FormGroup;
   officialInformationForm: FormGroup;
   bankAccountDetailForm: FormGroup;
-  salaryDetailForm: FormGroup;
+  // salaryDetailForm: FormGroup;
 
   constructor(private deparmentService: DepartmentService) {}
 
@@ -64,20 +66,18 @@ export class AddEmployeeComponent implements OnInit {
       accountTitle: new FormControl('', [Validators.required]),
     });
 
-    // Initialize form controls for salary details
-    this.salaryDetailForm = new FormGroup({
-      amount: new FormControl(null, [Validators.required]),
-      payrollType: new FormControl('monthly', [Validators.required]),
-      currencyType: new FormControl('rs', [Validators.required]),
-    });
+    // Access the salaryFormGroup from the SalaryDetailComponent
+    console.log(this.salaryComponent.salaryFormGroup);
   }
-
+  ngAfterViewInit() {
+    // Access the salaryFormGroup from the SalaryDetailComponent
+    console.log(this.salaryComponent.salaryFormGroup);
+  }
   handleUpdateEmployee() {
     const userData = {
       personalInformation: this.personalInformationForm.value,
       officialInformation: this.officialInformationForm.value,
       bankDetails: this.bankAccountDetailForm.value,
-      salaryDetails: this.salaryDetailForm.value,
     };
     console.log(userData);
   }

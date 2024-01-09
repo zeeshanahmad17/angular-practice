@@ -8,7 +8,7 @@
   <app-bank-account-detail
     [bankAccountFormGroup]="bankAccountDetailForm"
   ></app-bank-account-detail>
-  <app-salary-detail [salaryFormGroup]="salaryDetailForm"></app-salary-detail>
+  <app-salary-detail></app-salary-detail>
 
   <button
     class="btn btn-success my-4"
@@ -17,8 +17,7 @@
     [disabled]="
       personalInformationForm.invalid ||
       officialInformationForm.invalid ||
-      bankAccountDetailForm.invalid ||
-      salaryDetailForm.invalid
+      bankAccountDetailForm.invalid
     "
   >
     Save Details
