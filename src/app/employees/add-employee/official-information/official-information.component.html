@@ -134,7 +134,13 @@
               </div>
             </div>
 
-            <div class="col-md-4">
+            <div
+              class="col-md-4"
+              *ngIf="
+                officialInformationForm.get('employeeType').value !==
+                'internship'
+              "
+            >
               <div class="form-floating">
                 <input
                   type="number"
@@ -146,7 +152,13 @@
               </div>
             </div>
 
-            <!-- <div class="col-md-4">
+            <div
+              class="col-md-4"
+              *ngIf="
+                officialInformationForm.get('employeeType').value !==
+                'permanent'
+              "
+            >
               <div class="form-floating">
                 <input
                   type="date"
@@ -157,7 +169,7 @@
                 />
                 <label for="endDate">End Date *</label>
               </div>
-            </div> -->
+            </div>
           </div>
         </form>
       </div>

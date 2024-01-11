@@ -20,7 +20,26 @@ export class OfficialInformationComponent implements OnInit {
       joiningDate: new FormControl(null, [Validators.required]),
       employeeType: new FormControl('permanent', [Validators.required]),
       probation: new FormControl(null),
-      endDate: new FormControl(null), // required if employeeType is permanent
+      endDate: new FormControl(null), // required if employeeType is not permanent
     });
+
+    this.officialInformationForm
+      .get('employeeType')
+      .valueChanges.subscribe(() => {
+        this.officialInformationForm.get('endDate').setValue(null);
+        this.officialInformationForm
+          .get('endDate')
+          .setValidators(this.validateEndDate());
+        this.officialInformationForm.get('endDate').updateValueAndValidity();
+      });
+  }
+  validateEndDate() {
+    if (
+      this.officialInformationForm.get('employeeType').value !== 'permanent'
+    ) {
+      return [Validators.required];
+    } else {
+      return null;
+    }
   }
 }
