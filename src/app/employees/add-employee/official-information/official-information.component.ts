@@ -33,6 +33,7 @@ export class OfficialInformationComponent implements OnInit {
         this.officialInformationForm.get('endDate').updateValueAndValidity();
       });
   }
+
   validateEndDate() {
     if (
       this.officialInformationForm.get('employeeType').value !== 'permanent'

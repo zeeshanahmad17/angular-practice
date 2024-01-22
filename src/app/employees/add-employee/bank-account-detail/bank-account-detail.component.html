@@ -45,71 +45,83 @@
                 <label for="paymentMode">Payment Mode *</label>
               </div>
             </div>
-
-            <div class="col-md-4">
-              <div class="form-floating">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="bankName"
-                  placeholder=""
-                  formControlName="bankName"
-                />
-                <label for="bankName">Bank Name *</label>
+            <ng-container
+              *ngIf="bankAccountFormGroup.get('paymentMode').value !== 'cash'"
+            >
+              <div class="col-md-4">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="bankName"
+                    placeholder=""
+                    formControlName="bankName"
+                  />
+                  <label for="bankName">Bank Name *</label>
+                </div>
               </div>
-            </div>
 
-            <div class="col-md-4">
-              <div class="form-floating">
-                <input
-                  type="number"
-                  class="form-control"
-                  id="accountNumber"
-                  placeholder=""
-                  formControlName="accountNumber"
-                />
-                <label for="accountNumber">Account Number *</label>
+              <div
+                class="col-md-4"
+                *ngIf="bankAccountFormGroup.get('paymentMode').value === 'bank'"
+              >
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="accountNumber"
+                    placeholder=""
+                    formControlName="accountNumber"
+                  />
+                  <label for="accountNumber">Account Number *</label>
+                </div>
               </div>
-            </div>
 
-            <div class="col-md-4">
-              <div class="form-floating">
-                <input
-                  type="number"
-                  class="form-control"
-                  id="phoneNumber"
-                  placeholder=""
-                  formControlName="phoneNumber"
-                />
-                <label for="phoneNumber">Phone Number *</label>
+              <div
+                class="col-md-4"
+                *ngIf="bankAccountFormGroup.get('paymentMode').value === 'mfb'"
+              >
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="phoneNumber"
+                    placeholder=""
+                    formControlName="phoneNumber"
+                  />
+                  <label for="phoneNumber">Phone Number *</label>
+                </div>
               </div>
-            </div>
 
-            <div class="col-md-4">
-              <div class="form-floating">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="iban"
-                  placeholder=""
-                  formControlName="iban"
-                />
-                <label for="iban">IBAN</label>
+              <div
+                class="col-md-4"
+                *ngIf="bankAccountFormGroup.get('paymentMode').value === 'bank'"
+              >
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="iban"
+                    placeholder=""
+                    formControlName="iban"
+                  />
+                  <label for="iban">IBAN</label>
+                </div>
               </div>
-            </div>
 
-            <div class="col-md-4">
-              <div class="form-floating">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="accountTitle"
-                  placeholder=""
-                  formControlName="accountTitle"
-                />
-                <label for="accountTitle">Account Title *</label>
+              <div class="col-md-4">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="accountTitle"
+                    placeholder=""
+                    formControlName="accountTitle"
+                  />
+                  <label for="accountTitle">Account Title *</label>
+                </div>
               </div>
-            </div>
+            </ng-container>
           </div>
         </form>
       </div>
