@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CountryService } from '../../services/countries.service';
 
 @Component({
   selector: 'app-personal-information',
@@ -8,8 +9,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class PersonalInformationComponent implements OnInit {
   personalInformationForm: FormGroup;
+  countriesList: any[];
+  states: any[];
+
+  constructor(private countryService: CountryService) {}
 
   ngOnInit(): void {
+    this.countriesList = this.countryService.getCountries();
     // Initialize form controls for personal information
     this.personalInformationForm = new FormGroup({
       profileImage: new FormControl(null),
@@ -21,7 +27,7 @@ export class PersonalInformationComponent implements OnInit {
       dob: new FormControl(null),
       contact: new FormControl(null),
       email: new FormControl('', [Validators.required]),
-      country: new FormControl('pakistan', [Validators.required]),
+      country: new FormControl(167, [Validators.required]),
       province: new FormControl(''),
       city: new FormControl(''),
       address: new FormControl(''),
@@ -29,6 +35,14 @@ export class PersonalInformationComponent implements OnInit {
       cnicImage: new FormControl(null, [Validators.required]),
     });
   }
+
+  countrySelectionHandler(event) {
+    let selectedCountry = Number(event.target.value);
+    this.states = this.countriesList.find(
+      (country) => country.id === selectedCountry
+    ).states;
+  }
+
   // Image Handler
   selectImageHandler = async (e, fieldName) => {
     const file = e.target.files[0];

@@ -28,6 +28,7 @@ import { ReactiveFormsComponent } from './forms-practice/reactive-forms/reactive
 import { ReactiveFormsAssignmentComponent } from './forms-practice/reactive-forms-assignment/reactive-forms-assignment.component';
 // Modules
 import { AppRoutingModule } from './app-routing.module';
+import { EmployeeModule } from './employees/employee.module';
 // Services
 import { AccountService } from './servicesPractice/services/account.service';
 import { LoggingService } from './servicesPractice/services/logging.service';
@@ -39,12 +40,6 @@ import { AuthService } from './auth.service';
 import { CanDeactivateGuard } from './routingPractice/servers/edit-server/can-deactivate-guard.service';
 import { ServerResolver } from './routingPractice/servers/server/server-resolver.service';
 import { FormsExtraComponent } from './forms-practice/forms-extra/forms-extra.component';
-import { AddEmployeeComponent } from './employees/add-employee/add-employee.component';
-import { PersonalInformationComponent } from './employees/add-employee/personal-information/personal-information.component';
-import { OfficialInformationComponent } from './employees/add-employee/official-information/official-information.component';
-import { BankAccountDetailComponent } from './employees/add-employee/bank-account-detail/bank-account-detail.component';
-import { SalaryDetailComponent } from './employees/add-employee/salary-detail/salary-detail.component';
-import { DepartmentService } from './employees/services/department.service';
 
 @NgModule({
   declarations: [
@@ -73,17 +68,13 @@ import { DepartmentService } from './employees/services/department.service';
     ReactiveFormsComponent,
     ReactiveFormsAssignmentComponent,
     FormsExtraComponent,
-    AddEmployeeComponent,
-    PersonalInformationComponent,
-    OfficialInformationComponent,
-    BankAccountDetailComponent,
-    SalaryDetailComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    EmployeeModule,
     NgxMaskDirective,
     NgxMaskPipe,
   ],
@@ -97,7 +88,6 @@ import { DepartmentService } from './employees/services/department.service';
     AuthService,
     CanDeactivateGuard,
     ServerResolver,
-    DepartmentService,
     provideNgxMask(),
   ],
   bootstrap: [AppComponent],

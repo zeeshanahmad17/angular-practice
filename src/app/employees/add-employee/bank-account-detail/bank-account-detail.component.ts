@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -9,8 +9,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class BankAccountDetailComponent implements OnInit {
   bankAccountFormGroup: FormGroup;
 
+  constructor(private cdr: ChangeDetectorRef) {}
+
   ngOnInit(): void {
-    // Initialize form controls for bank account details
     this.bankAccountFormGroup = new FormGroup({
       paymentMode: new FormControl('cash', [Validators.required]),
       bankName: new FormControl(''),
@@ -29,10 +30,16 @@ export class BankAccountDetailComponent implements OnInit {
 
   updateValidatorsBasedOnPaymentMode(paymentMode: string): void {
     this.bankAccountFormGroup.get('bankName').clearValidators();
+    this.bankAccountFormGroup.get('bankName').setErrors(null);
+
     this.bankAccountFormGroup.get('accountNumber').clearValidators();
+    this.bankAccountFormGroup.get('accountNumber').setErrors(null);
+
     this.bankAccountFormGroup.get('phoneNumber').clearValidators();
-    this.bankAccountFormGroup.get('iban').clearValidators();
+    this.bankAccountFormGroup.get('phoneNumber').setErrors(null);
+    
     this.bankAccountFormGroup.get('accountTitle').clearValidators();
+    this.bankAccountFormGroup.get('accountTitle').setErrors(null);
 
     if (paymentMode === 'bank') {
       this.bankAccountFormGroup
@@ -56,6 +63,8 @@ export class BankAccountDetailComponent implements OnInit {
         .setValidators([Validators.required]);
     }
 
-    this.bankAccountFormGroup.updateValueAndValidity();
+    this.bankAccountFormGroup.updateValueAndValidity({ emitEvent: true });
+    this.cdr.detectChanges();
+    console.log(this.bankAccountFormGroup);
   }
 }

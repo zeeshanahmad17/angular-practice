@@ -11,12 +11,11 @@
       >
         <span>
           <i
-            *ngIf="!salaryFormGroup.valid"
-            class="fa-solid fa-circle-info text-warning"
-          ></i>
-          <i
-            *ngIf="salaryFormGroup.valid"
-            class="fa-solid fa-circle-check text-success"
+            [ngClass]="
+              salaryFormGroup.invalid
+                ? 'bi-info-circle-fill text-warning'
+                : 'bi-info-circle-fill text-success'
+            "
           ></i>
         </span>
         Salary Detail

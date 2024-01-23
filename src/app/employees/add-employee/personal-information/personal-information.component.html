@@ -11,12 +11,11 @@
       >
         <span>
           <i
-            *ngIf="!personalInformationForm.valid"
-            class="fa-solid fa-circle-info text-warning"
-          ></i>
-          <i
-            *ngIf="personalInformationForm.valid"
-            class="fa-solid fa-circle-check text-success"
+            [ngClass]="
+              personalInformationForm.invalid
+                ? 'bi-info-circle-fill text-warning'
+                : 'bi-info-circle-fill text-success'
+            "
           ></i>
         </span>
         Personal Information
@@ -156,8 +155,14 @@
                     id="floatingCountry"
                     aria-label="Floating country"
                     formControlName="country"
+                    (change)="countrySelectionHandler($event)"
                   >
-                    <option selected value="pakistan">Pakistan</option>
+                    <option
+                      [value]="country.id"
+                      *ngFor="let country of countriesList"
+                    >
+                      {{ country.countryName }}
+                    </option>
                   </select>
                   <label for="floatingCountry">Country *</label>
                 </div>
@@ -171,9 +176,9 @@
                     aria-label="Floating state"
                     formControlName="province"
                   >
-                    <option selected value="punjab">Punjab</option>
-                    <option value="sindh">Sindh</option>
-                    <option value="kpk">KPK</option>
+                    <option [value]="state.id" *ngFor="let state of states">
+                      {{ state.stateName }}
+                    </option>
                   </select>
                   <label for="floatingState">State / Province</label>
                 </div>
