@@ -192,9 +192,12 @@
                     aria-label="Floating city"
                     formControlName="city"
                   >
-                    <option selected value="lahore">Lahore</option>
-                    <option value="gujranwala">Gujranwala</option>
-                    <option value="islamabad">Islamabad</option>
+                    <option disabled value="notFound" *ngIf="cities.length < 1">
+                      No Cities Found!
+                    </option>
+                    <option [value]="city" *ngFor="let city of cities">
+                      {{ city.cityName }}
+                    </option>
                   </select>
                   <label for="floatingCity">City</label>
                 </div>

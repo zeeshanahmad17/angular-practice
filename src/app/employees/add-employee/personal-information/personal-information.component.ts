@@ -11,6 +11,7 @@ export class PersonalInformationComponent implements OnInit {
   personalInformationForm: FormGroup;
   countriesList: any[];
   states: any[];
+  cities: any[];
 
   constructor(private countryService: CountryService) {}
 
@@ -34,15 +35,47 @@ export class PersonalInformationComponent implements OnInit {
       filer: new FormControl(false),
       cnicImage: new FormControl(null, [Validators.required]),
     });
+
+    // Set up initial states based on the default country (167)
+    const defaultCountryId = 167;
+    this.updateStates(defaultCountryId);
   }
 
   countrySelectionHandler(event) {
-    let selectedCountry = Number(event.target.value);
-    this.states = this.countriesList.find(
-      (country) => country.id === selectedCountry
-    ).states;
+    let selectedCountryId = Number(event.target.value);
+    this.updateStates(selectedCountryId);
   }
 
+  stateSelectionHandler(event) {
+    let selectedStateId = Number(event.target.value);
+    this.updateCities(selectedStateId);
+  }
+
+  updateStates(countryId: number) {
+    const selectedCountry = this.countriesList.find(
+      (country) => country.id === countryId
+    );
+
+    // Update states
+    this.states = selectedCountry ? selectedCountry.states : [];
+
+    // Reset province and city fields in the form
+    this.personalInformationForm.get('province').setValue('');
+    this.personalInformationForm.get('city').setValue('');
+
+    // Update cities based on the first state (if available)
+    this.updateCities(this.states.length > 0 ? this.states[0].id : null);
+  }
+
+  updateCities(stateId: number) {
+    const selectedState = this.states.find((state) => state.id === stateId);
+
+    // Update cities
+    this.cities = selectedState ? selectedState.cities : [];
+
+    // Reset city field in the form
+    this.personalInformationForm.get('city').setValue('');
+  }
   // Image Handler
   selectImageHandler = async (e, fieldName) => {
     const file = e.target.files[0];
