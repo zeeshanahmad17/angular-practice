@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CountryService } from '../../services/countries.service';
+import { ICountry, IState } from '../../models/country';
 
 @Component({
   selector: 'app-personal-information',
@@ -9,9 +10,9 @@ import { CountryService } from '../../services/countries.service';
 })
 export class PersonalInformationComponent implements OnInit {
   personalInformationForm: FormGroup;
-  countriesList: any[];
-  states: any[];
-  cities: any[];
+  countriesList: any[] = [];
+  states: any[] = [];
+  cities: any[] = [];
 
   constructor(private countryService: CountryService) {}
 
@@ -28,7 +29,7 @@ export class PersonalInformationComponent implements OnInit {
       dob: new FormControl(null),
       contact: new FormControl(null),
       email: new FormControl('', [Validators.required]),
-      country: new FormControl(167, [Validators.required]),
+      country: new FormControl('Pakistan', [Validators.required]),
       province: new FormControl(''),
       city: new FormControl(''),
       address: new FormControl(''),
@@ -36,46 +37,38 @@ export class PersonalInformationComponent implements OnInit {
       cnicImage: new FormControl(null, [Validators.required]),
     });
 
-    // Set up initial states based on the default country (167)
-    const defaultCountryId = 167;
-    this.updateStates(defaultCountryId);
+    this.updateStates('Pakistan');
   }
 
   countrySelectionHandler(event) {
-    let selectedCountryId = Number(event.target.value);
-    this.updateStates(selectedCountryId);
+    let selectedCountry = event.target.value;
+    this.updateStates(selectedCountry);
   }
 
   stateSelectionHandler(event) {
-    let selectedStateId = Number(event.target.value);
-    this.updateCities(selectedStateId);
+    let selectedState = event.target.value;
+    this.updateCities(selectedState);
   }
 
-  updateStates(countryId: number) {
+  updateStates(countryName) {
     const selectedCountry = this.countriesList.find(
-      (country) => country.id === countryId
+      (country: ICountry) => country.countryName === countryName
     );
+    this.personalInformationForm.get('country').setValue(countryName);
 
-    // Update states
     this.states = selectedCountry ? selectedCountry.states : [];
-
-    // Reset province and city fields in the form
     this.personalInformationForm.get('province').setValue('');
     this.personalInformationForm.get('city').setValue('');
-
-    // Update cities based on the first state (if available)
-    this.updateCities(this.states.length > 0 ? this.states[0].id : null);
   }
 
-  updateCities(stateId: number) {
-    const selectedState = this.states.find((state) => state.id === stateId);
-
-    // Update cities
+  updateCities(stateName) {
+    const selectedState = this.states.find(
+      (state: IState) => state.stateName === stateName
+    );
     this.cities = selectedState ? selectedState.cities : [];
-
-    // Reset city field in the form
     this.personalInformationForm.get('city').setValue('');
   }
+
   // Image Handler
   selectImageHandler = async (e, fieldName) => {
     const file = e.target.files[0];

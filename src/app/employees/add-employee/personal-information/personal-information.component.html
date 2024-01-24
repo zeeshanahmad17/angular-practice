@@ -158,7 +158,7 @@
                     (change)="countrySelectionHandler($event)"
                   >
                     <option
-                      [value]="country.id"
+                      [value]="country.countryName"
                       *ngFor="let country of countriesList"
                     >
                       {{ country.countryName }}
@@ -175,8 +175,15 @@
                     id="floatingState"
                     aria-label="Floating state"
                     formControlName="province"
+                    (change)="stateSelectionHandler($event)"
                   >
-                    <option [value]="state.id" *ngFor="let state of states">
+                    <option disabled value="notFound" *ngIf="states.length < 1">
+                      No States Found!
+                    </option>
+                    <option
+                      [value]="state.stateName"
+                      *ngFor="let state of states"
+                    >
                       {{ state.stateName }}
                     </option>
                   </select>
@@ -195,7 +202,7 @@
                     <option disabled value="notFound" *ngIf="cities.length < 1">
                       No Cities Found!
                     </option>
-                    <option [value]="city" *ngFor="let city of cities">
+                    <option [value]="city.cityName" *ngFor="let city of cities">
                       {{ city.cityName }}
                     </option>
                   </select>
