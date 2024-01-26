@@ -26,6 +26,7 @@ import { FormsPracticeComponent } from './forms-practice/forms-practice.componen
 import { TdformsAssignmentComponent } from './forms-practice/tdforms-assignment/tdforms-assignment.component';
 import { ReactiveFormsComponent } from './forms-practice/reactive-forms/reactive-forms.component';
 import { ReactiveFormsAssignmentComponent } from './forms-practice/reactive-forms-assignment/reactive-forms-assignment.component';
+import { PipesAssignmentComponent } from './pipes-assignment/pipes-assignment.component';
 // Modules
 import { AppRoutingModule } from './app-routing.module';
 import { EmployeeModule } from './employees/employee.module';
@@ -40,6 +41,9 @@ import { AuthService } from './auth.service';
 import { CanDeactivateGuard } from './routingPractice/servers/edit-server/can-deactivate-guard.service';
 import { ServerResolver } from './routingPractice/servers/server/server-resolver.service';
 import { FormsExtraComponent } from './forms-practice/forms-extra/forms-extra.component';
+// Pipes
+import { ReversePipe } from './pipes-assignment/reverse.pipe';
+import { SortPipe } from './pipes-assignment/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -68,6 +72,9 @@ import { FormsExtraComponent } from './forms-practice/forms-extra/forms-extra.co
     ReactiveFormsComponent,
     ReactiveFormsAssignmentComponent,
     FormsExtraComponent,
+    PipesAssignmentComponent,
+    ReversePipe,
+    SortPipe,
   ],
   imports: [
     BrowserModule,
