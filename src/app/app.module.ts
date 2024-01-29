@@ -45,6 +45,7 @@ import { FormsExtraComponent } from './forms-practice/forms-extra/forms-extra.co
 import { ReversePipe } from './pipes-assignment/reverse.pipe';
 import { SortPipe } from './pipes-assignment/sort.pipe';
 import { ShortenPipe } from './pipes-assignment/shorten.pipe';
+import { FilterPipe } from './pipes-assignment/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { ShortenPipe } from './pipes-assignment/shorten.pipe';
     ReversePipe,
     SortPipe,
     ShortenPipe,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
