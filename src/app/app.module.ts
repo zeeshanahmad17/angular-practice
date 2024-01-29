@@ -46,6 +46,8 @@ import { ReversePipe } from './pipes-assignment/reverse.pipe';
 import { SortPipe } from './pipes-assignment/sort.pipe';
 import { ShortenPipe } from './pipes-assignment/shorten.pipe';
 import { FilterPipe } from './pipes-assignment/filter.pipe';
+import { HttpPracticeComponent } from './http-practice/http-practice.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -79,6 +81,7 @@ import { FilterPipe } from './pipes-assignment/filter.pipe';
     SortPipe,
     ShortenPipe,
     FilterPipe,
+    HttpPracticeComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,6 +91,7 @@ import { FilterPipe } from './pipes-assignment/filter.pipe';
     EmployeeModule,
     NgxMaskDirective,
     NgxMaskPipe,
+    HttpClientModule,
   ],
   providers: [
     AccountService,
