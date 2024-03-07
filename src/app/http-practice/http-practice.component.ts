@@ -10,10 +10,13 @@ import { HttpService } from './services/posts.service';
 })
 export class HttpPracticeComponent {
   loadedPosts = [];
+  isLoading = false;
 
   constructor(private httpService: HttpService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.onFetchPosts();
+  }
 
   onCreatePost(postData: { title: string; content: string }) {
     // Send Http request
@@ -22,8 +25,10 @@ export class HttpPracticeComponent {
 
   onFetchPosts() {
     // Send Http request
+    this.isLoading = true;
     this.httpService.getPosts().subscribe((data) => {
-      console.log(data);
+      this.loadedPosts = data;
+      this.isLoading = false;
     });
   }
 

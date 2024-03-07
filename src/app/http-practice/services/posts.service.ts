@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
+import { IPost } from '../models/posts.model';
 
 @Injectable({
   providedIn: 'root',
@@ -21,10 +22,12 @@ export class HttpService {
 
   getPosts() {
     return this.http
-      .get('https://ng-backend-7c6e6-default-rtdb.firebaseio.com/posts.json')
+      .get<{ [key: string]: IPost }>(
+        'https://ng-backend-7c6e6-default-rtdb.firebaseio.com/posts.json'
+      )
       .pipe(
         map((res) => {
-          let posts = [];
+          let posts: IPost[] = [];
           for (let key in res) {
             if (res.hasOwnProperty(key)) {
               let post = {
