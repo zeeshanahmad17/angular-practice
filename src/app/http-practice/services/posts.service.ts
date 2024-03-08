@@ -41,4 +41,10 @@ export class HttpService {
         })
       );
   }
+
+  deletePosts() {
+    return this.http.delete(
+      'https://ng-backend-7c6e6-default-rtdb.firebaseio.com/posts.json'
+    );
+  }
 }

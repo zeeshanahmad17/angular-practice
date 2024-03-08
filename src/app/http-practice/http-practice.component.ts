@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
+// Service
 import { HttpService } from './services/posts.service';
 
 @Component({
@@ -34,5 +33,9 @@ export class HttpPracticeComponent {
 
   onClearPosts() {
     // Send Http request
+    this.httpService.deletePosts().subscribe((data) => {
+      console.log(data);
+      this.loadedPosts = [];
+    });
   }
 }
