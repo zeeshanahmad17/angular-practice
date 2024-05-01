@@ -14,6 +14,9 @@ export class HttpPracticeComponent {
   constructor(private httpService: HttpService) {}
 
   ngOnInit() {
+    this.httpService.errorSub.subscribe((err) => {
+      console.log('error: ' + err);
+    });
     this.onFetchPosts();
   }
 
@@ -25,10 +28,13 @@ export class HttpPracticeComponent {
   onFetchPosts() {
     // Send Http request
     this.isLoading = true;
-    this.httpService.getPosts().subscribe((data) => {
-      this.loadedPosts = data;
-      this.isLoading = false;
-    });
+    this.httpService.getPosts().subscribe(
+      (data) => {
+        this.loadedPosts = data;
+        this.isLoading = false;
+      }
+      // (error) => console.log(error.message)
+    );
   }
 
   onClearPosts() {

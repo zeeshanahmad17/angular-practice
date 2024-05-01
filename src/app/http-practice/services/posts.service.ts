@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { Subject, map } from 'rxjs';
 import { IPost } from '../models/posts.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HttpService {
+  errorSub = new Subject<string>();
   constructor(private http: HttpClient) {}
 
   savePost(payload) {
@@ -15,9 +16,12 @@ export class HttpService {
         'https://ng-backend-7c6e6-default-rtdb.firebaseio.com/posts.json',
         payload
       )
-      .subscribe((res) => {
-        console.log(res);
-      });
+      .subscribe(
+        (res) => {
+          console.log(res);
+        },
+        (error) => this.errorSub.next(error.message)
+      );
   }
 
   getPosts() {
