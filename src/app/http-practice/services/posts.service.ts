@@ -1,6 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpEventType,
+  HttpHeaders,
+  HttpParams,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, map } from 'rxjs';
+import { Subject, map, tap } from 'rxjs';
 import { IPost } from '../models/posts.model';
 
 @Injectable({
@@ -14,7 +19,8 @@ export class HttpService {
     this.http
       .post(
         'https://ng-backend-7c6e6-default-rtdb.firebaseio.com/posts.json',
-        payload
+        payload,
+        { observe: 'body' }
       )
       .subscribe(
         (res) => {
@@ -25,9 +31,18 @@ export class HttpService {
   }
 
   getPosts() {
+    let requestParams = new HttpParams();
+    requestParams = requestParams.append('search', 'test');
+    requestParams = requestParams.append('page', '-1');
+
     return this.http
       .get<{ [key: string]: IPost }>(
-        'https://ng-backend-7c6e6-default-rtdb.firebaseio.com/posts.json'
+        'https://ng-backend-7c6e6-default-rtdb.firebaseio.com/posts.json',
+        {
+          headers: new HttpHeaders({ 'Dummy-Header': 'dummyValue' }),
+          // params: new HttpParams().set('search', 'test'),
+          params: requestParams,
+        }
       )
       .pipe(
         map((res) => {
@@ -47,8 +62,18 @@ export class HttpService {
   }
 
   deletePosts() {
-    return this.http.delete(
-      'https://ng-backend-7c6e6-default-rtdb.firebaseio.com/posts.json'
-    );
+    return this.http
+      .delete(
+        'https://ng-backend-7c6e6-default-rtdb.firebaseio.com/posts.json',
+        { observe: 'events' }
+      )
+      .pipe(
+        tap((event) => {
+          console.log(event);
+          if (event.type === HttpEventType.Response) {
+            console.log('found it');
+          }
+        })
+      );
   }
 }
