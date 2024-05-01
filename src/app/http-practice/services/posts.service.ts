@@ -20,7 +20,7 @@ export class HttpService {
       .post(
         'https://ng-backend-7c6e6-default-rtdb.firebaseio.com/posts.json',
         payload,
-        { observe: 'body' }
+        { observe: 'body', responseType: 'text' }
       )
       .subscribe(
         (res) => {

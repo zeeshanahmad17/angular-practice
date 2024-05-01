@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 // Forms Imports
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Routing Imports
@@ -47,7 +48,9 @@ import { SortPipe } from './pipes-assignment/sort.pipe';
 import { ShortenPipe } from './pipes-assignment/shorten.pipe';
 import { FilterPipe } from './pipes-assignment/filter.pipe';
 import { HttpPracticeComponent } from './http-practice/http-practice.component';
-import { HttpClientModule } from '@angular/common/http';
+// Interceptors
+import { AuthInterceptorService } from './http-practice/interceptors/auth-interceptor.service';
+import { LoginInterceptorService } from './http-practice/interceptors/login-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -94,6 +97,16 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoginInterceptorService,
+      multi: true,
+    },
     AccountService,
     LoggingService,
     UserService,
